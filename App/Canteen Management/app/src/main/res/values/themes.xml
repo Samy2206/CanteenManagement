@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CanteenManagement" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/mainPrimarycolor</item>
+        <item name="colorPrimaryDark">@color/mainPrimaryDarkColor</item>
+        <item name="colorAccent">@color/mainAccentColor</item>
+        <item name="android:windowBackground">@color/mainWindowBackground</item>
+    </style>
+
+    <style name="Theme.CanteenManagement" parent="Base.Theme.CanteenManagement" />
+</resources>

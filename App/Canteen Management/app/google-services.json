@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083838316376",
+    "project_id": "canteen-management-1188c",
+    "storage_bucket": "canteen-management-1188c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083838316376:android:e71f1060468e2c99a06f2d",
+        "android_client_info": {
+          "package_name": "com.example.canteenmanagement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByWqdTyUjXsC8xuePLL1uiY2d9UV3sgAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
