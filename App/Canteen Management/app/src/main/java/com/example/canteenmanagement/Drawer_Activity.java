@@ -71,6 +71,8 @@ public class Drawer_Activity extends AppCompatActivity {
             }
         });
 
+        setProfile();
+
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -89,6 +91,12 @@ public class Drawer_Activity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void setProfile() {
+
+        View view = navigationView.getHeaderView(0);
 
     }
 

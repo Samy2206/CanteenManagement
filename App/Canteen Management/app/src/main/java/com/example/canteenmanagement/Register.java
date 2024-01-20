@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -18,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +30,10 @@ public class Register extends AppCompatActivity {
     private FirebaseFirestore fstore;
     private EditText txtName,txtEmail,txtPassword,txtPhoneNo;
     private AppCompatButton btnRegister;
+    private Spinner spinnerView;
+    private ArrayList<String> arrPosition = new ArrayList<>();
+
+    String txtPosition;
 
 
     @Override
@@ -40,6 +48,40 @@ public class Register extends AppCompatActivity {
         fauth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
         btnRegister = findViewById(R.id.btnRegiter);
+        spinnerView = findViewById(R.id.spinnerView);
+
+        setPositions();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,arrPosition);
+        spinnerView.setAdapter(adapter);
+        spinnerView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0)
+                {
+                    Toast.makeText(Register.this, "Please select an position", Toast.LENGTH_SHORT).show();
+                }
+                else if(position==1)
+                {
+                    txtPosition = arrPosition.get(1);
+                }
+                else if(position==2)
+                {
+                    txtPosition = arrPosition.get(2);
+
+                } else if (position==3)
+                {
+                    txtPosition = arrPosition.get(3);
+                } else if (position==4)
+                {
+                    txtPosition = arrPosition.get(4);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +90,7 @@ public class Register extends AppCompatActivity {
                 String email = txtEmail.getText().toString();
                 String password = txtPassword.getText().toString();
                 String phoneNo = txtPhoneNo.getText().toString();
+                String position = txtPosition;
                 if(password.length()<6)
                 {
                     Toast.makeText(Register.this, "Password Length too Short", Toast.LENGTH_SHORT).show();
@@ -59,10 +102,13 @@ public class Register extends AppCompatActivity {
                 else if (TextUtils.isEmpty(phoneNo))
                 {
                     Toast.makeText(Register.this, "Phone Number Field is Empty", Toast.LENGTH_SHORT).show();
-                }
-                else
+                } else if (position.isEmpty())
                 {
-                    registerUser(email, password, name, phoneNo);
+                    Toast.makeText(Register.this, "Please select an position", Toast.LENGTH_SHORT).show();
+
+                } else
+                {
+                    registerUser(email, password, name, phoneNo,position);
                 }
             }
         });
@@ -70,7 +116,16 @@ public class Register extends AppCompatActivity {
 
     }
 
-    private void registerUser(String email, String password, String name, String phoneNo) {
+    private void setPositions() {
+
+        arrPosition.add("---Select---");
+        arrPosition.add("Manager");
+        arrPosition.add("Cook");
+        arrPosition.add("Sweeper");
+        arrPosition.add("Waiter");
+    }
+
+    private void registerUser(String email, String password, String name, String phoneNo,String position) {
         fauth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -81,6 +136,7 @@ public class Register extends AppCompatActivity {
                 user.put("name",name);
                 user.put("email",email);
                 user.put("phoneno",phoneNo);
+                user.put("position",position);
                 ref.set(user);
                 startActivity(new Intent(Register.this, Drawer_Activity.class));
                 finish();
