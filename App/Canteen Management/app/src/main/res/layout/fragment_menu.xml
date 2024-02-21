@@ -6,11 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MenuFragment">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/menu"
-        android:layout_centerInParent="true"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recMenu"
     />
-
 </RelativeLayout>

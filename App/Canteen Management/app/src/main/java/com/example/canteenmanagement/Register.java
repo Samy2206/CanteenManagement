@@ -47,7 +47,7 @@ public class Register extends AppCompatActivity {
         txtPhoneNo = findViewById(R.id.txtPhoneNo);
         fauth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
-        btnRegister = findViewById(R.id.btnRegiter);
+        btnRegister = findViewById(R.id.btnRegister); // Corrected typo here
         spinnerView = findViewById(R.id.spinnerView);
 
         setPositions();
@@ -56,30 +56,12 @@ public class Register extends AppCompatActivity {
         spinnerView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0)
-                {
-                    Toast.makeText(Register.this, "Please select an position", Toast.LENGTH_SHORT).show();
-                }
-                else if(position==1)
-                {
-                    txtPosition = arrPosition.get(1);
-                }
-                else if(position==2)
-                {
-                    txtPosition = arrPosition.get(2);
-
-                } else if (position==3)
-                {
-                    txtPosition = arrPosition.get(3);
-                } else if (position==4)
-                {
-                    txtPosition = arrPosition.get(4);
-                }
+                txtPosition = arrPosition.get(position); // Get selected position from spinner
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                txtPosition = ""; // Handle case when nothing is selected
             }
         });
 
@@ -91,24 +73,17 @@ public class Register extends AppCompatActivity {
                 String password = txtPassword.getText().toString();
                 String phoneNo = txtPhoneNo.getText().toString();
                 String position = txtPosition;
-                if(password.length()<6)
-                {
-                    Toast.makeText(Register.this, "Password Length too Short", Toast.LENGTH_SHORT).show();
-                }
-                else if(TextUtils.isEmpty(name))
-                {
-                    Toast.makeText(Register.this, "Name Field is Empty", Toast.LENGTH_SHORT).show();
-                }
-                else if (TextUtils.isEmpty(phoneNo))
-                {
-                    Toast.makeText(Register.this, "Phone Number Field is Empty", Toast.LENGTH_SHORT).show();
-                } else if (position.isEmpty())
-                {
-                    Toast.makeText(Register.this, "Please select an position", Toast.LENGTH_SHORT).show();
 
-                } else
-                {
-                    registerUser(email, password, name, phoneNo,position);
+                if (password.length() < 6) {
+                    Toast.makeText(Register.this, "Password Length too Short", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(Register.this, "Name Field is Empty", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(phoneNo)) {
+                    Toast.makeText(Register.this, "Phone Number Field is Empty", Toast.LENGTH_SHORT).show();
+                } else if (position.equals("---Select---")) {
+                    Toast.makeText(Register.this, "Please select a position", Toast.LENGTH_SHORT).show();
+                } else {
+                    registerUser(email, password, name, phoneNo, position);
                 }
             }
         });
@@ -117,7 +92,6 @@ public class Register extends AppCompatActivity {
     }
 
     private void setPositions() {
-
         arrPosition.add("---Select---");
         arrPosition.add("Manager");
         arrPosition.add("Cook");

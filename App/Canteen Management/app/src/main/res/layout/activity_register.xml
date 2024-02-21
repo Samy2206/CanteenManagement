@@ -113,7 +113,7 @@
             android:background="@color/mainAccentColor"
             android:layout_gravity="end"
             android:text="Register"
-            android:id="@+id/btnRegiter"
+            android:id="@+id/btnRegister"
         />
 
         </LinearLayout>
