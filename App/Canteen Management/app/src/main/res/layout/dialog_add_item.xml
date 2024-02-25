@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/digimgNew"
+    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/digimgNew"
+        android:layout_alignParentBottom="true"
+    >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Food Name"
+            android:id="@+id/digedtFoodName"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:background="#C67272"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:hint="Food Price"
+            android:id="@+id/digedtFoodPrice"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:background="#C67272"
+            android:padding="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Select Image"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/digbtnSelect"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Add"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/digbtnAdd"
+        />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

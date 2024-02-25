@@ -44,6 +44,7 @@ public class Drawer_Activity extends AppCompatActivity {
         loadFragment(new MenuFragment(),true);
 
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Menu");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.OpenDrawer,R.string.CloseDrawer);
         toggle.syncState();
 
@@ -80,12 +81,18 @@ public class Drawer_Activity extends AppCompatActivity {
                 if(id==R.id.nav_menu)
                 {
                     loadFragment(new MenuFragment(),false);
+                    setSupportActionBar(toolbar);
+                    toolbar.setTitle("Menu");
                 }
                 else if (id==R.id.nav_billing)
                 {
                     loadFragment(new BillingFragment(),false);
+                    setSupportActionBar(toolbar);
+                    toolbar.setTitle("Billing");
                 }else {
                     loadFragment(new DashboardFragment(),false);
+                    setSupportActionBar(toolbar);
+                    toolbar.setTitle("Dahsboard");
                 }
                 return true;
             }
