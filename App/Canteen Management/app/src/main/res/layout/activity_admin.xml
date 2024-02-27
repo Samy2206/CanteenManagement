@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/mainPrimaryDarkColor"
@@ -17,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="16sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginEnd="8dp"
             android:text="Date"
@@ -28,17 +29,43 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="22sp"
             android:text="Total Amount"
             android:textColor="@color/black"
+            android:paddingRight="5dp"
             />
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:id="@+id/recAllTotal"
-        android:layout_marginBottom="20dp"
-    />
+        android:layout_height="wrap_content"
+        android:background="@color/mainPrimaryDarkColor"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="8dp"
+            android:text="28-12-2003"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:id="@+id/txtDate"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="501"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:paddingRight="5dp"
+            android:id="@+id/txtTotal"
+            />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,21 +32,21 @@ public class AdminActivity extends AppCompatActivity {
     private static final String TAG = "AdminActivity";
     private FirebaseFirestore firestore;
     private ArrayList<ModelAll> modelAllList = new ArrayList<>();
-    private RecyclerView recAllTotal;
-    private AdapterAllTotal adapterAllTotal;
+   private TextView txtDate,txtTotal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
         firestore = FirebaseFirestore.getInstance();
-        recAllTotal = findViewById(R.id.recAllTotal);
         btnDelBills = findViewById(R.id.btnDelBills);
         btnDelHot = findViewById(R.id.btnDelHot);
         btnDelCold = findViewById(R.id.btnDelCold);
         btnDelWafers = findViewById(R.id.btnDelWafers);
         btnDelBreakfast = findViewById(R.id.btnDelBreakfast);
         btnDelSpecial = findViewById(R.id.btnDelSecial);
+        txtDate = findViewById(R.id.txtDate);
+        txtTotal = findViewById(R.id.txtTotal);
 
         // Get the current date
         Date currentDate = Calendar.getInstance().getTime();
@@ -80,13 +79,12 @@ public class AdminActivity extends AppCompatActivity {
 
                     // Convert the totalAmountMap data to ModelAll objects and add them to the list
                     for (Map.Entry<String, Integer> entry : totalAmountMap.entrySet()) {
-                        modelAllList.add(new ModelAll(entry.getKey(),entry.getValue()));
+                        txtTotal.setText(String.valueOf(entry.getValue()));
+                        txtTotal.setText(String.valueOf(entry.getValue()));
                         Log.d(TAG, "onComplete: "+modelAllList);
                     }
 
-                    recAllTotal.setLayoutManager(new LinearLayoutManager(AdminActivity.this));
-                    adapterAllTotal = new AdapterAllTotal(modelAllList);
-                    recAllTotal.setAdapter(adapterAllTotal);
+
 
                     // Log total amount for each date
                     for (ModelAll modelAll : modelAllList) {
@@ -243,7 +241,6 @@ public class AdminActivity extends AppCompatActivity {
                                     // After resetting shared preference, you may want to update the UI or perform any other action
                                     // For example, you can clear the list of ModelAll objects
                                     modelAllList.clear();
-                                    adapterAllTotal.notifyDataSetChanged(); // Notify the adapter of the data change
                                 } else {
                                     Log.e(TAG, "Error deleting bills: ", task.getException());
                                 }

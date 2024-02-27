@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Splash_Activity"
+    android:orientation="vertical"
+    android:gravity="center">
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_marginBottom="30dp"
+        android:layout_width="250dp"
+        android:id="@+id/animOpen"
+        android:layout_height="250dp"
+        app:lottie_rawRes="@raw/anim_app_opening"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canteen Management"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/mainAccentColor"
+        android:id="@+id/txtSGS2"
+        />
+
+</LinearLayout>
