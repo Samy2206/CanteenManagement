@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/mainPrimarycolor"
+    android:orientation="horizontal"
+    android:layout_marginBottom="5dp">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Ice Cream"
+        android:textSize="20sp"
+        android:layout_gravity="left"
+        android:paddingLeft="10sp"
+        android:id="@+id/txtFoodName"
+    />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="15"
+        android:textSize="20sp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/txtFoodPrice"
+    />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+    >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="22dp"
+            android:src="@drawable/negatve"
+            android:id="@+id/btnRemoveFood"
+        />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#F43838"
+            android:id="@+id/txtFoodQuantity"
+        />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="22dp"
+            android:src="@drawable/posititve"
+            android:id="@+id/btnAddFood"
+        />
+
+    </LinearLayout>
+
+
+</LinearLayout>
